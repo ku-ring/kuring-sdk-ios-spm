@@ -18,6 +18,20 @@
 
 ## 시작하기
 
+> **중요!**
+> Starscream을 꼭 다운 받아야 합니다.
+
+
+### 스위프트 패키지로 설치하기
+
+> **URL** https://github.com/KU-Stacks/kuring-sdk-ios-spm
+
+1. Xcode 상단 메뉴에서 File > Add Packages... 를 클릭합니다.
+2. URL 입력창에 상단에 적힌 URL를 입력합니다.
+3. `Up to next minor version` 을 선택하고 시작 버전을 `1.1.2`로 명시합니다.
+4. 패키지 추가 버튼을 눌러 스위프트 패키지를 다운 받습니다.
+5. Starscream 에 대한 스위프트 패키지도 다운로드합니다.
+
 ### XC프레임워크 사용하기
 
 1. [Release 페이지](https://github.com/KU-Stacks/kuring-sdk-ios-spm/releases) 에서 원하는 버전으로 이동합니다
@@ -27,12 +41,13 @@
 5. Starscream 에 대한 스위프트 패키지도 다운로드합니다.
 <img width="560" alt="Screen Shot 2022-04-25 at 9 56 07 PM" src="https://user-images.githubusercontent.com/53814741/165093500-0f0e51c0-e6b8-410d-84b5-9c590fb296e8.png">
 
-### 스위프트 패키지로 설치하기
+## 사용하기
 
-url: https://github.com/KU-Stacks/kuring-sdk-ios-spm
+```swift
+import KuringSDK
 
-> **중요!**
-> Starscream을 꼭 다운 받아야 합니다.
+print(Kuring.version)
+```
 
 ### developed by...
 
