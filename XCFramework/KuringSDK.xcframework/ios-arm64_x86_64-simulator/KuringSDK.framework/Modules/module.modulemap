@@ -1,0 +1,11 @@
+framework module KuringSDK {
+  umbrella header "KuringSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module KuringSDK.Swift {
+    header "KuringSDK-Swift.h"
+    requires objc
+}
