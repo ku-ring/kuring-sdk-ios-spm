@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name KuringSDK
 import Combine
 import Foundation
@@ -26,6 +26,13 @@ public protocol SearcherDelegate : AnyObject {
   func searcher(_ searcher: KuringSDK.Searcher, didReceiveStaffList staffs: [KuringSDK.Staff])
   func searcher(_ searcher: KuringSDK.Searcher, didReceiveNoticeList notices: [KuringSDK.Notice])
   func searcherDidSendHeartbeat(_ searcher: KuringSDK.Searcher)
+}
+extension Swift.Set : Swift.RawRepresentable where Element : Swift.Decodable, Element : Swift.Encodable {
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.String
 }
 @_hasMissingDesignatedInitializers public class Searcher {
   public enum SearchType : Swift.String, Swift.Hashable, Swift.CaseIterable {
@@ -101,6 +108,13 @@ public enum NoticeType : Swift.Int, Swift.Hashable, Swift.CaseIterable {
     get
   }
 }
+extension Swift.Array : Swift.RawRepresentable where Element : Swift.Decodable, Element : Swift.Encodable {
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.String
+}
 public class Notification : Swift.Identifiable {
   public var id: Swift.String {
     get
@@ -123,7 +137,7 @@ public protocol KuringDelegate : AnyObject {
   func didReadyToCreateNotificationBanner(title: Swift.String, body: Swift.String, identifier: Swift.String)
   func didUpdateSubscription(_ subscription: KuringSDK.Subscription)
 }
-public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable {
+public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable, Swift.RawRepresentable {
   public func hash(into hasher: inout Swift.Hasher)
   public static func == (lhs: KuringSDK.Notice, rhs: KuringSDK.Notice) -> Swift.Bool
   public var id: Swift.String {
@@ -133,20 +147,24 @@ public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable {
   final public let subject: Swift.String
   final public let category: KuringSDK.NoticeType
   final public let urlString: Swift.String
-  final public let postedAt: Foundation.TimeInterval
+  public var postedAt: Foundation.TimeInterval {
+    get
+  }
   final public let tags: [Swift.String]
   public var isNew: Swift.Bool
   public var isRead: Swift.Bool
   public var isSubscribed: Swift.Bool
-  public init(articleID: Swift.String, subject: Swift.String, category: KuringSDK.NoticeType, urlString: Swift.String, postedAt: Foundation.TimeInterval, tags: [Swift.String], isNew: Swift.Bool = false, isRead: Swift.Bool = false, isSubscribed: Swift.Bool)
-  public func read()
-  required public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
-  public typealias ID = Swift.String
-  @objc deinit
-  public var hashValue: Swift.Int {
+  public var rawValue: Swift.String {
     get
   }
+  public init(articleID: Swift.String, subject: Swift.String, category: KuringSDK.NoticeType, urlString: Swift.String, postedDateString: Swift.String, tags: [Swift.String], isNew: Swift.Bool = false, isRead: Swift.Bool = false, isSubscribed: Swift.Bool)
+  public func read()
+  required public init(from decoder: Swift.Decoder) throws
+  required public init?(rawValue: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public typealias ID = Swift.String
+  public typealias RawValue = Swift.String
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class Kuring {
   public static var version: Swift.String {
@@ -190,6 +208,10 @@ public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable {
   public static func fetchSubscription(resultHandler: @escaping (Swift.Result<KuringSDK.Subscription, Swift.Error>) -> Swift.Void)
   public static func updateSubscription(categories: [Swift.String], resultHandler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   public static func sendFeedback(_ text: Swift.String, resultHandler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public static var userID: Swift.String? {
+    get
+    set
+  }
   public static var runAt: Swift.Double {
     get
   }
@@ -224,6 +246,18 @@ public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable {
     get
   }
   public static func updateAppVersion(to version: Swift.String)
+  public static var inAppReviewCount: Swift.Int {
+    get
+    set
+  }
+  public static var noticeBookmark: [KuringSDK.Notice] {
+    get
+    set
+  }
+  public static var cachedNotices: [Swift.String : KuringSDK.Notice] {
+    get
+    set
+  }
   @objc deinit
 }
 public struct Feedback : Swift.Identifiable {

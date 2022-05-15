@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/KuringSDK-Swift.h</key>
 		<data>
-		h3CUB7yykG5aVuOIdUzdt+ItrnQ=
+		Nrpb026wwVFdzdXg1PIz3NR5e/k=
 		</data>
 		<key>Headers/KuringSDK.h</key>
 		<data>
@@ -14,31 +14,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		IJowDyYPlBkCDMSbxigPeupeR04=
+		6sJoAWnx2aaR0CbFzUaiXm6aVp4=
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		VtsyuYArrCFls90RpX9ci8PUfh8=
+		b50bIZMeI6/uMoKWbgm9e7gG5Hk=
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		AwiV+owwwNAOLoNc1tb8gqNiGu0=
+		WdsR4nujgJnzfOsHYOObVGUrwl0=
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		gr5HKx4XNiHI2tG3Y0/BEX4VF6w=
-		</data>
-		<key>Modules/KuringSDK.swiftmodule/arm64.swiftdoc</key>
-		<data>
-		VtsyuYArrCFls90RpX9ci8PUfh8=
-		</data>
-		<key>Modules/KuringSDK.swiftmodule/arm64.swiftinterface</key>
-		<data>
-		AwiV+owwwNAOLoNc1tb8gqNiGu0=
-		</data>
-		<key>Modules/KuringSDK.swiftmodule/arm64.swiftmodule</key>
-		<data>
-		gr5HKx4XNiHI2tG3Y0/BEX4VF6w=
+		EKKs3HtlDzsGk2eqaCg+x0fAF84=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,7 +39,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mfFjEf5UJCEqb3y0PgR8YFsroQT9guxBBM+TPBX3BnU=
+			nE5HzNAlR0A69GRfMVqAKmwtHyiCJwB2x7JJm5Gjz4g=
 			</data>
 		</dict>
 		<key>Headers/KuringSDK.h</key>
@@ -65,42 +53,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Shz7w5imBPEjy5K7WMh6XpkJzu1tjUWqSjLINz9NpCk=
+			+ioXUA7awfrB2ClnyILIXkZWxw90jK4pjEJ33DaqaVw=
 			</data>
 		</dict>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l8SMx+kr00+E2810KXhv8M8eddfea39tx1DDICXe05o=
+			fVeS7V597bzSwk9aaW8iWG3053tlFRaSwkdEe6lZKdw=
 			</data>
 		</dict>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DUeNwMD9UWE6BMDJZ8YPzHjCgZqufi047kmmXWW/Wxs=
-			</data>
-		</dict>
-		<key>Modules/KuringSDK.swiftmodule/arm64.swiftdoc</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Shz7w5imBPEjy5K7WMh6XpkJzu1tjUWqSjLINz9NpCk=
-			</data>
-		</dict>
-		<key>Modules/KuringSDK.swiftmodule/arm64.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			l8SMx+kr00+E2810KXhv8M8eddfea39tx1DDICXe05o=
-			</data>
-		</dict>
-		<key>Modules/KuringSDK.swiftmodule/arm64.swiftmodule</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			DUeNwMD9UWE6BMDJZ8YPzHjCgZqufi047kmmXWW/Wxs=
+			CFpu4tIQBaE0qu914jsOP0bJHh/EOrTjn3gNO74MHsI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
