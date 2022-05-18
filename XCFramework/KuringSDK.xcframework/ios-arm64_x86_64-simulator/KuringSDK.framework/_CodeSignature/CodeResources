@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		wJvBt6Yhc39VJDQD9BeaGh8ITg8=
+		UXJmwIlmGVy0Pj5mCxtGm7tpP5I=
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		51rVNdRaEp+UaBIr2aT07W+k4Os=
+		+wJ7ScTVHBV81yNGXUwtO81Q8i8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -79,7 +79,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/G1Q449KtFbqXtPIj/GiNiTBGcbKA7e/7MZYDsrJcTg=
+			LORkmhMCW6mJVKyaOLNXoCAcgwGXDem0Uunt0FYKc4g=
 			</data>
 		</dict>
 		<key>Modules/KuringSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -100,7 +100,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zwGrasPDKme9BxmJZLcbXGhbh9JFr7+UXC7+MyXcuIA=
+			hEFKd/fAWtBqHOBV9YthieGWvzgOS75EIGrs1yXfPgA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
