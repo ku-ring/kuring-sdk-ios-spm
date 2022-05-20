@@ -258,6 +258,10 @@ public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable, Swift.R
     get
     set
   }
+  public static var blockedUserIDs: Swift.Set<Swift.String> {
+    get
+    set
+  }
   @objc deinit
 }
 public struct Feedback : Swift.Identifiable {
