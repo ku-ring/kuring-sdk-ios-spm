@@ -4,32 +4,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "Kuring",
-    platforms: [
-        .iOS(.v15)
-    ],
+    name: "KuringSDK",
+    platforms: [.iOS(.v14)],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "Kuring",
-            targets: ["Kuring", "KuringSDK"]),
+            name: "KuringSDK",
+            targets: ["KuringSDK"]),
     ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
+    dependencies: [],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "Kuring",
-            dependencies: []),
         .binaryTarget(
             name: "KuringSDK",
-            path: "XCFramework/KuringSDK.xcframework"
+            url: "https://github.com/KU-Stacks/kuring-sdk-ios-spm/releases/download/1.2.1/KuringSDK.xcframework.zip",
+            checksum: "95efbb18d60663de163b0439f0c49713b2161802ff1324ebf967d1e8c2882551"
         ),
-        .testTarget(
-            name: "KuringTests",
-            dependencies: ["Kuring"]),
     ]
 )
