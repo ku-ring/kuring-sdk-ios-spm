@@ -115,25 +115,8 @@ extension Swift.Array : Swift.RawRepresentable where Element : Swift.Decodable, 
   }
   public typealias RawValue = Swift.String
 }
-public class Notification : Swift.Identifiable {
-  public var id: Swift.String {
-    get
-  }
-  final public let articleID: Swift.String
-  final public let subject: Swift.String
-  final public let category: KuringSDK.NoticeType
-  final public let baseURLString: Swift.String
-  final public let postedAt: Foundation.TimeInterval
-  final public let receivedAt: Foundation.TimeInterval
-  public var isNew: Swift.Bool
-  final public let tags: [Swift.String]
-  public init(articleID: Swift.String, subject: Swift.String, categoryString: Swift.String, baseURLString: Swift.String, postedDateString: Swift.String)
-  convenience public init?(userInfo: [Swift.String : Any])
-  public typealias ID = Swift.String
-  @objc deinit
-}
 public protocol KuringDelegate : AnyObject {
-  func didReceiveNotification(_ notification: KuringSDK.Notification)
+  func didReceiveNotification(_ notification: KuringSDK.Notice)
   func didReadyToCreateNotificationBanner(title: Swift.String, body: Swift.String, identifier: Swift.String)
   func didUpdateSubscription(_ subscription: KuringSDK.Subscription)
 }
@@ -158,6 +141,7 @@ public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable, Swift.R
     get
   }
   public init(articleID: Swift.String, subject: Swift.String, category: KuringSDK.NoticeType, urlString: Swift.String, postedDateString: Swift.String, tags: [Swift.String], isNew: Swift.Bool = false, isRead: Swift.Bool = false, isSubscribed: Swift.Bool)
+  convenience public init?(userInfo: [Swift.String : Any])
   public func read()
   required public init(from decoder: Swift.Decoder) throws
   required public init?(rawValue: Swift.String)
@@ -183,7 +167,7 @@ public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable, Swift.R
   public static var adUnitID: Swift.String {
     get
   }
-  public static var notifications: [Swift.String : [KuringSDK.Notification]] {
+  public static var notifications: [Swift.String : [KuringSDK.Notice]] {
     get
   }
   public static var hasNewNotification: Swift.Bool {
@@ -198,6 +182,7 @@ public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable, Swift.R
   public static func addDelegate<T>(_ delegate: T, forKey key: Swift.String) where T : KuringSDK.KuringDelegate
   public static func removeDelegate(forKey key: Swift.String)
   public static func removeAllDelegates()
+  public static func removeNotification(_ notification: KuringSDK.Notice)
   public static func removeNotification(at row: Swift.Int, forDate date: Swift.String)
   public static func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any])
   public static func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification)
@@ -282,6 +267,24 @@ extension KuringSDK.Feedback : Swift.Encodable {
   public func load(resultHandler: @escaping (Swift.Result<[KuringSDK.Notice], Swift.Error>) -> Swift.Void)
   @objc deinit
 }
+extension KuringSDK.Kuring {
+  public enum TestableCase {
+    case notifications
+    case noticeList
+    public static func == (a: KuringSDK.Kuring.TestableCase, b: KuringSDK.Kuring.TestableCase) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static var testableModels: [KuringSDK.Kuring.TestableCase : Any] {
+    get
+    set
+  }
+  public static var isTestableModelUsed: Swift.Bool {
+    get
+  }
+}
 public struct Subscription : Swift.Identifiable {
   public let id: Swift.String
   public let categories: [Swift.String]
@@ -291,3 +294,5 @@ public struct Subscription : Swift.Identifiable {
 extension KuringSDK.Searcher.SearchType : Swift.RawRepresentable {}
 extension KuringSDK.Searcher.ConnectionState : Swift.RawRepresentable {}
 extension KuringSDK.NoticeType : Swift.RawRepresentable {}
+extension KuringSDK.Kuring.TestableCase : Swift.Equatable {}
+extension KuringSDK.Kuring.TestableCase : Swift.Hashable {}

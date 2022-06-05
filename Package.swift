@@ -16,7 +16,7 @@ let package = Package(
         .binaryTarget(
             name: "KuringSDK",
             url: "https://github.com/KU-Stacks/kuring-sdk-ios-spm/releases/download/1.2.1/KuringSDK.xcframework.zip",
-            checksum: "95efbb18d60663de163b0439f0c49713b2161802ff1324ebf967d1e8c2882551"
+            checksum: "d4fa79d25f018916c6bb7d9990db236d98ab3ac92f1cd1f1ee2811ed6c9d8fad"
         ),
     ]
 )
