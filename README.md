@@ -49,6 +49,10 @@ import KuringSDK
 print(Kuring.version)
 ```
 
+> **참고**
+> [개발 문서 링크](https://ku-stacks.github.io/kuring-lite-ios/documentation/kuringsdk)
+
+
 ### developed by...
 
 [🐷](https://github.com/jaesung-0o0)
