@@ -6,6 +6,6 @@ framework module KuringSDK {
 }
 
 module KuringSDK.Swift {
-    header "KuringSDK-Swift.h"
-    requires objc
+  header "KuringSDK-Swift.h"
+  requires objc
 }

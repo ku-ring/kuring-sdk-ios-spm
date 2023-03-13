@@ -1,15 +1,17 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name KuringSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import Combine
 import Foundation
 @_exported import KuringSDK
-import Starscream
+import OrderedCollections
 import Swift
 import SwiftUI
 import UIKit
 import UserNotifications
 import _Concurrency
+import _StringProcessing
 public struct Staff : Swift.Decodable {
   public let name: Swift.String
   public let collegeName: Swift.String
@@ -20,71 +22,12 @@ public struct Staff : Swift.Decodable {
   public let email: Swift.String
   public init(from decoder: Swift.Decoder) throws
 }
-public protocol SearcherDelegate : AnyObject {
-  func searcher(_ searcher: KuringSDK.Searcher, didChangeState state: KuringSDK.Searcher.ConnectionState)
-  func searcher(_ searcher: KuringSDK.Searcher, didReceiveError error: Swift.Error?)
-  func searcher(_ searcher: KuringSDK.Searcher, didReceiveStaffList staffs: [KuringSDK.Staff])
-  func searcher(_ searcher: KuringSDK.Searcher, didReceiveNoticeList notices: [KuringSDK.Notice])
-  func searcherDidSendHeartbeat(_ searcher: KuringSDK.Searcher)
-}
 extension Swift.Set : Swift.RawRepresentable where Element : Swift.Decodable, Element : Swift.Encodable {
   public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
   public typealias RawValue = Swift.String
-}
-@_hasMissingDesignatedInitializers public class Searcher {
-  public enum SearchType : Swift.String, Swift.Hashable, Swift.CaseIterable {
-    case notice
-    case staff
-    public var koreanValue: Swift.String {
-      get
-    }
-    public init?(rawValue: Swift.String)
-    public typealias AllCases = [KuringSDK.Searcher.SearchType]
-    public typealias RawValue = Swift.String
-    public static var allCases: [KuringSDK.Searcher.SearchType] {
-      get
-    }
-    public var rawValue: Swift.String {
-      get
-    }
-  }
-  public enum ConnectionState : Swift.Int, Swift.Hashable {
-    case connected
-    case connecting
-    case disconnected
-    public init?(rawValue: Swift.Int)
-    public typealias RawValue = Swift.Int
-    public var rawValue: Swift.Int {
-      get
-    }
-  }
-  public var searchType: KuringSDK.Searcher.SearchType
-  @KuringSDK.WebSocketConcurrenyObject public var connection: KuringSDK.Searcher.ConnectionState {
-    get
-    set
-    _modify
-  }
-  weak public var delegate: KuringSDK.SearcherDelegate?
-  @objc deinit
-  @objc public func connect()
-  @objc public func disconnect()
-  public func reconnect()
-  public func search(_ message: Swift.String, forType type: KuringSDK.Searcher.SearchType)
-}
-extension KuringSDK.Searcher : Starscream.WebSocketDelegate {
-  public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
-}
-@propertyWrapper public class WebSocketConcurrenyObject {
-  public var wrappedValue: KuringSDK.Searcher.ConnectionState {
-    get
-    set
-  }
-  public var state: KuringSDK.Searcher.ConnectionState
-  public init(_ initialState: KuringSDK.Searcher.ConnectionState = .disconnected)
-  @objc deinit
 }
 public enum NoticeType : Swift.Int, Swift.Hashable, Swift.CaseIterable {
   case 학사, 장학, 취창업, 국제, 학생, 산학, 일반, 도서관
@@ -115,10 +58,20 @@ extension Swift.Array : Swift.RawRepresentable where Element : Swift.Decodable, 
   }
   public typealias RawValue = Swift.String
 }
+public struct NoticeData : Swift.Decodable {
+  public let articleID: Swift.String
+  public let postedDate: Swift.String
+  public let subject: Swift.String
+  public let baseURL: Swift.String
+  public let category: KuringSDK.NoticeType
+  public init(from decoder: Swift.Decoder) throws
+}
 public protocol KuringDelegate : AnyObject {
   func didReceiveNotification(_ notification: KuringSDK.Notice)
-  func didReadyToCreateNotificationBanner(title: Swift.String, body: Swift.String, identifier: Swift.String)
   func didUpdateSubscription(_ subscription: KuringSDK.Subscription)
+  func didTapNoticeNotification(_ notice: KuringSDK.Notice)
+  func didTapCustomNotification(title: Swift.String, body: Swift.String)
+  func didTapSendbirdNotification(_ message: Swift.String)
 }
 public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable, Swift.RawRepresentable {
   public func hash(into hasher: inout Swift.Hasher)
@@ -158,9 +111,6 @@ public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable, Swift.R
     get
     set
   }
-  public static var appsflyerKey: Swift.String {
-    get
-  }
   public static var appleID: Swift.String {
     get
   }
@@ -185,11 +135,20 @@ public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable, Swift.R
   public static func removeNotification(_ notification: KuringSDK.Notice)
   public static func removeNotification(at row: Swift.Int, forDate date: Swift.String)
   public static func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any])
-  public static func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification)
+  public static func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
   public static func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse)
-  public static func createSearcher(delegate: KuringSDK.SearcherDelegate) -> KuringSDK.Searcher
   public static func createNoticeListQuery(with params: KuringSDK.NoticeListQuery.Params) -> KuringSDK.NoticeListQuery
+  @available(*, unavailable, renamed: "readNotice(_:)")
   public static func readNotice(id: Swift.String)
+  public static func readNotice(_ notice: KuringSDK.Notice)
+  public static func searchNotices(keyword: Swift.String, resultHandler: @escaping (Swift.Result<[KuringSDK.NoticeData], Swift.Error>) -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func searchNotices(keyword: Swift.String) async -> [KuringSDK.NoticeData]
+  #endif
+  public static func searchStaffs(keyword: Swift.String, resultHandler: @escaping (Swift.Result<[KuringSDK.Staff], Swift.Error>) -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func searchStaffs(keyword: Swift.String) async -> [KuringSDK.Staff]
+  #endif
   public static func fetchSubscription(resultHandler: @escaping (Swift.Result<KuringSDK.Subscription, Swift.Error>) -> Swift.Void)
   public static func updateSubscription(categories: [Swift.String], resultHandler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
   public static func sendFeedback(_ text: Swift.String, resultHandler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
@@ -291,8 +250,6 @@ public struct Subscription : Swift.Identifiable {
   public init(categories: [Swift.String])
   public typealias ID = Swift.String
 }
-extension KuringSDK.Searcher.SearchType : Swift.RawRepresentable {}
-extension KuringSDK.Searcher.ConnectionState : Swift.RawRepresentable {}
 extension KuringSDK.NoticeType : Swift.RawRepresentable {}
 extension KuringSDK.Kuring.TestableCase : Swift.Equatable {}
 extension KuringSDK.Kuring.TestableCase : Swift.Hashable {}

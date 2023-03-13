@@ -1,0 +1,255 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name KuringSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Combine
+import Foundation
+@_exported import KuringSDK
+import OrderedCollections
+import Swift
+import SwiftUI
+import UIKit
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+public struct Staff : Swift.Decodable {
+  public let name: Swift.String
+  public let collegeName: Swift.String
+  public let deptName: Swift.String
+  public let major: Swift.String
+  public let lab: Swift.String
+  public let phone: Swift.String
+  public let email: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+}
+extension Swift.Set : Swift.RawRepresentable where Element : Swift.Decodable, Element : Swift.Encodable {
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.String
+}
+public enum NoticeType : Swift.Int, Swift.Hashable, Swift.CaseIterable {
+  case 학사, 장학, 취창업, 국제, 학생, 산학, 일반, 도서관
+  public static func from(_ string: Swift.String) -> KuringSDK.NoticeType
+  public var koreanValue: Swift.String {
+    get
+  }
+  public var stringValue: Swift.String {
+    get
+  }
+  public var shortStringValue: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [KuringSDK.NoticeType]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [KuringSDK.NoticeType] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension Swift.Array : Swift.RawRepresentable where Element : Swift.Decodable, Element : Swift.Encodable {
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.String
+}
+public struct NoticeData : Swift.Decodable {
+  public let articleID: Swift.String
+  public let postedDate: Swift.String
+  public let subject: Swift.String
+  public let baseURL: Swift.String
+  public let category: KuringSDK.NoticeType
+  public init(from decoder: Swift.Decoder) throws
+}
+public protocol KuringDelegate : AnyObject {
+  func didReceiveNotification(_ notification: KuringSDK.Notice)
+  func didUpdateSubscription(_ subscription: KuringSDK.Subscription)
+  func didTapNoticeNotification(_ notice: KuringSDK.Notice)
+  func didTapCustomNotification(title: Swift.String, body: Swift.String)
+  func didTapSendbirdNotification(_ message: Swift.String)
+}
+public class Notice : Swift.Identifiable, Swift.Codable, Swift.Hashable, Swift.RawRepresentable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (lhs: KuringSDK.Notice, rhs: KuringSDK.Notice) -> Swift.Bool
+  public var id: Swift.String {
+    get
+  }
+  final public let articleID: Swift.String
+  final public let subject: Swift.String
+  final public let category: KuringSDK.NoticeType
+  final public let urlString: Swift.String
+  public var postedAt: Foundation.TimeInterval {
+    get
+  }
+  final public let tags: [Swift.String]
+  public var isNew: Swift.Bool
+  public var isRead: Swift.Bool
+  public var isSubscribed: Swift.Bool
+  public var rawValue: Swift.String {
+    get
+  }
+  public init(articleID: Swift.String, subject: Swift.String, category: KuringSDK.NoticeType, urlString: Swift.String, postedDateString: Swift.String, tags: [Swift.String], isNew: Swift.Bool = false, isRead: Swift.Bool = false, isSubscribed: Swift.Bool)
+  convenience public init?(userInfo: [Swift.String : Any])
+  public func read()
+  required public init(from decoder: Swift.Decoder) throws
+  required public init?(rawValue: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public typealias ID = Swift.String
+  public typealias RawValue = Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class Kuring {
+  public static var version: Swift.String {
+    get
+  }
+  public static var apiKey: Swift.String {
+    get
+    set
+  }
+  public static var appleID: Swift.String {
+    get
+  }
+  public static var adUnitID: Swift.String {
+    get
+  }
+  public static var notifications: [Swift.String : [KuringSDK.Notice]] {
+    get
+  }
+  public static var hasNewNotification: Swift.Bool {
+    get
+    set
+  }
+  public static var isCustomNotificationEnabled: Swift.Bool {
+    get
+    set
+  }
+  public static func register(fcmToken: Swift.String, resultHandler: ((Swift.Result<Swift.Bool, Swift.Error>) -> Swift.Void)? = nil)
+  public static func addDelegate<T>(_ delegate: T, forKey key: Swift.String) where T : KuringSDK.KuringDelegate
+  public static func removeDelegate(forKey key: Swift.String)
+  public static func removeAllDelegates()
+  public static func removeNotification(_ notification: KuringSDK.Notice)
+  public static func removeNotification(at row: Swift.Int, forDate date: Swift.String)
+  public static func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any])
+  public static func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  public static func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse)
+  public static func createNoticeListQuery(with params: KuringSDK.NoticeListQuery.Params) -> KuringSDK.NoticeListQuery
+  @available(*, unavailable, renamed: "readNotice(_:)")
+  public static func readNotice(id: Swift.String)
+  public static func readNotice(_ notice: KuringSDK.Notice)
+  public static func searchNotices(keyword: Swift.String, resultHandler: @escaping (Swift.Result<[KuringSDK.NoticeData], Swift.Error>) -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func searchNotices(keyword: Swift.String) async -> [KuringSDK.NoticeData]
+  #endif
+  public static func searchStaffs(keyword: Swift.String, resultHandler: @escaping (Swift.Result<[KuringSDK.Staff], Swift.Error>) -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  public static func searchStaffs(keyword: Swift.String) async -> [KuringSDK.Staff]
+  #endif
+  public static func fetchSubscription(resultHandler: @escaping (Swift.Result<KuringSDK.Subscription, Swift.Error>) -> Swift.Void)
+  public static func updateSubscription(categories: [Swift.String], resultHandler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public static func sendFeedback(_ text: Swift.String, resultHandler: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public static var userID: Swift.String? {
+    get
+    set
+  }
+  public static var runAt: Swift.Double {
+    get
+  }
+  public static var startedAt: Swift.Double {
+    get
+  }
+  public static var lastRunAt: Swift.Double {
+    get
+  }
+  public static var lastReadNotice: Swift.String? {
+    get
+    set
+  }
+  public static var readNoticeIDs: Swift.Set<Swift.String> {
+    get
+    set
+  }
+  public static var categoryStrings: [Swift.String] {
+    get
+    set
+  }
+  public static var subscribedCategories: [KuringSDK.NoticeType] {
+    get
+  }
+  public static var lastRunDate: Foundation.Date {
+    get
+  }
+  public static var isFirstRun: Swift.Bool {
+    get
+  }
+  public static var appVersion: Swift.String? {
+    get
+  }
+  public static func updateAppVersion(to version: Swift.String)
+  public static var inAppReviewCount: Swift.Int {
+    get
+    set
+  }
+  public static var noticeBookmark: [KuringSDK.Notice] {
+    get
+    set
+  }
+  public static var cachedNotices: [Swift.String : KuringSDK.Notice] {
+    get
+    set
+  }
+  public static var blockedUserIDs: Swift.Set<Swift.String> {
+    get
+    set
+  }
+  @objc deinit
+}
+public struct Feedback : Swift.Identifiable {
+  public var id: Swift.String {
+    get
+  }
+  public let fcmToken: Swift.String
+  public let content: Swift.String
+  public typealias ID = Swift.String
+}
+extension KuringSDK.Feedback : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers public class NoticeListQuery {
+  public struct Params {
+    public init(type: KuringSDK.NoticeType, offset: Swift.UInt, max: Swift.UInt)
+  }
+  public func load(resultHandler: @escaping (Swift.Result<[KuringSDK.Notice], Swift.Error>) -> Swift.Void)
+  @objc deinit
+}
+extension KuringSDK.Kuring {
+  public enum TestableCase {
+    case notifications
+    case noticeList
+    public static func == (a: KuringSDK.Kuring.TestableCase, b: KuringSDK.Kuring.TestableCase) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static var testableModels: [KuringSDK.Kuring.TestableCase : Any] {
+    get
+    set
+  }
+  public static var isTestableModelUsed: Swift.Bool {
+    get
+  }
+}
+public struct Subscription : Swift.Identifiable {
+  public let id: Swift.String
+  public let categories: [Swift.String]
+  public init(categories: [Swift.String])
+  public typealias ID = Swift.String
+}
+extension KuringSDK.NoticeType : Swift.RawRepresentable {}
+extension KuringSDK.Kuring.TestableCase : Swift.Equatable {}
+extension KuringSDK.Kuring.TestableCase : Swift.Hashable {}
