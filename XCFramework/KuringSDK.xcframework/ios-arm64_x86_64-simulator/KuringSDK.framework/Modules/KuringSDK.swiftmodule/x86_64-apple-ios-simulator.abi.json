@@ -472,6 +472,43 @@
           },
           {
             "kind": "Var",
+            "name": "도서관",
+            "printedName": "도서관",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(KuringSDK.NoticeType.Type) -> KuringSDK.NoticeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NoticeType",
+                    "printedName": "KuringSDK.NoticeType",
+                    "usr": "s:9KuringSDK10NoticeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "KuringSDK.NoticeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NoticeType",
+                        "printedName": "KuringSDK.NoticeType",
+                        "usr": "s:9KuringSDK10NoticeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9KuringSDK10NoticeTypeO0010zbAbIBkCqmyA2CmF",
+            "mangledName": "$s9KuringSDK10NoticeTypeO0010zbAbIBkCqmyA2CmF",
+            "moduleName": "KuringSDK"
+          },
+          {
+            "kind": "Var",
             "name": "취창업",
             "printedName": "취창업",
             "children": [
@@ -653,43 +690,6 @@
             "declKind": "EnumElement",
             "usr": "s:9KuringSDK10NoticeTypeO007ehDbJBsyA2CmF",
             "mangledName": "$s9KuringSDK10NoticeTypeO007ehDbJBsyA2CmF",
-            "moduleName": "KuringSDK"
-          },
-          {
-            "kind": "Var",
-            "name": "도서관",
-            "printedName": "도서관",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(KuringSDK.NoticeType.Type) -> KuringSDK.NoticeType",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "NoticeType",
-                    "printedName": "KuringSDK.NoticeType",
-                    "usr": "s:9KuringSDK10NoticeTypeO"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "KuringSDK.NoticeType.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "NoticeType",
-                        "printedName": "KuringSDK.NoticeType",
-                        "usr": "s:9KuringSDK10NoticeTypeO"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "s:9KuringSDK10NoticeTypeO0010zbAbIBkCqmyA2CmF",
-            "mangledName": "$s9KuringSDK10NoticeTypeO0010zbAbIBkCqmyA2CmF",
             "moduleName": "KuringSDK"
           },
           {
@@ -7647,35 +7647,35 @@
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
       "offset": 196,
-      "length": 6,
+      "length": 9,
       "value": "3"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 204,
+      "offset": 207,
       "length": 6,
       "value": "4"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 212,
+      "offset": 215,
       "length": 6,
       "value": "5"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 220,
+      "offset": 223,
       "length": 6,
       "value": "6"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 228,
-      "length": 9,
+      "offset": 231,
+      "length": 6,
       "value": "7"
     },
     {
@@ -7696,35 +7696,35 @@
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
       "offset": 196,
-      "length": 6,
+      "length": 9,
       "value": "3"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 204,
+      "offset": 207,
       "length": 6,
       "value": "4"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 212,
+      "offset": 215,
       "length": 6,
       "value": "5"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 220,
+      "offset": 223,
       "length": 6,
       "value": "6"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 228,
-      "length": 9,
+      "offset": 231,
+      "length": 6,
       "value": "7"
     },
     {
@@ -7745,35 +7745,35 @@
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
       "offset": 196,
-      "length": 6,
+      "length": 9,
       "value": "3"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 204,
+      "offset": 207,
       "length": 6,
       "value": "4"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 212,
+      "offset": 215,
       "length": 6,
       "value": "5"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 220,
+      "offset": 223,
       "length": 6,
       "value": "6"
     },
     {
       "filePath": "\/Users\/jaesung.lee\/Documents\/Kuring\/kuring-sdk-ios\/KuringSDK\/Models\/NoticeType.swift",
       "kind": "IntegerLiteral",
-      "offset": 228,
-      "length": 9,
+      "offset": 231,
+      "length": 6,
       "value": "7"
     },
     {

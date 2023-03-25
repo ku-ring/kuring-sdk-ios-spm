@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		/OMtro2mxNmxdcFs5a5dfFccLeA=
+		gnBNEtYTpHku5zEMw0iov6S1Rno=
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		zHzT2GMdpo5AeSHWB9iJ6HJhuHA=
+		+DNqwQmqyuwYpmZ72UgUfecLjGg=
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -30,11 +30,11 @@
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		zHzT2GMdpo5AeSHWB9iJ6HJhuHA=
+		+DNqwQmqyuwYpmZ72UgUfecLjGg=
 		</data>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		6jo65UFtnJjhkQqcL8Py1FxuPc4=
+		eIsyU3DCVGP4jCHmGXcTtY1vg0A=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,14 +61,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8irVJ5RMi3HLn301VjABwSjWwVos5jzQNlU8oRxE0e8=
+			7GClltJGGUaNsU/OxDZFbcvFDoxIHy90lFHS2McM15c=
 			</data>
 		</dict>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G2Yyz/WVFGz+WvTX9lCcnA4WKBJidNGtKH39LtdYqS0=
+			GO/z+CORXvo45MRcARQBE9lq6DdlQK65fFpoVOUe4bQ=
 			</data>
 		</dict>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -82,14 +82,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			G2Yyz/WVFGz+WvTX9lCcnA4WKBJidNGtKH39LtdYqS0=
+			GO/z+CORXvo45MRcARQBE9lq6DdlQK65fFpoVOUe4bQ=
 			</data>
 		</dict>
 		<key>Modules/KuringSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eSeEv5S60O0uDUa9yTJ9tW6XU10MbkSMy6ce9fb3R5c=
+			h/mI1CpCTiqIPfpr3Bt8qw+1eIn4nKtLHX7/uM0GPlE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

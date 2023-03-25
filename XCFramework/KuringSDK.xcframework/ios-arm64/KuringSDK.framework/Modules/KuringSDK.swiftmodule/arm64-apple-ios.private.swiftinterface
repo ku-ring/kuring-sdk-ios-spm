@@ -30,7 +30,7 @@ extension Swift.Set : Swift.RawRepresentable where Element : Swift.Decodable, El
   public typealias RawValue = Swift.String
 }
 public enum NoticeType : Swift.Int, Swift.Hashable, Swift.CaseIterable {
-  case 학사, 장학, 취창업, 국제, 학생, 산학, 일반, 도서관
+  case 학사, 장학, 도서관, 취창업, 국제, 학생, 산학, 일반
   public static func from(_ string: Swift.String) -> KuringSDK.NoticeType
   public var koreanValue: Swift.String {
     get
